@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.pokemonlist'
+    namespace 'com.example.pokemonhandbook'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.pokemonlist"
+        applicationId "com.example.pokemonhandbook"
         minSdk 24
         targetSdk 34
         versionCode 1

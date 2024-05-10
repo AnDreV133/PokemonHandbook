@@ -1,4 +1,4 @@
-package com.example.pokemonlist
+package com.example.pokemonhandbook
 
 import org.junit.Test
 

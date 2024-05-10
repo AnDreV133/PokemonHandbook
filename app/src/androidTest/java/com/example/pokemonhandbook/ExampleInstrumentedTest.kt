@@ -1,4 +1,4 @@
-package com.example.pokemonlist
+package com.example.pokemonhandbook
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

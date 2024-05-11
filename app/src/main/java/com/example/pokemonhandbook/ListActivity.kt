@@ -7,6 +7,7 @@ import com.example.pokemonhandbook.adapter.ListAdapter
 import com.example.pokemonhandbook.api.PokemonApiHandler
 import com.example.pokemonhandbook.databinding.ActivityListBinding
 import kotlinx.coroutines.runBlocking
+import retrofit2.HttpException
 
 class ListActivity : AppCompatActivity() {
     private val TAG = "MyListActivity"
@@ -14,17 +15,11 @@ class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListBinding.inflate(layoutInflater)
-        setContentView(binding.root) // todo in async execution
+        setContentView(binding.root)
 
-//        val adapter = ListAdapter( // todo in async execution
-//            buildList {
-//                runBlocking {
-//                    PokemonApiHandler.getByDiapason(0, 10)
-//                }
-//            }, this
-//        )
+            binding.recyclerView.adapter = ListAdapter(this)
 
-        binding.recyclerView.adapter = ListAdapter(this)
+
         Log.d(TAG, "onCreate")
     }
 }

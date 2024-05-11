@@ -7,7 +7,7 @@ import com.example.pokemonhandbook.databinding.ActivityDetailBinding
 
 
 class DetailActivity : AppCompatActivity() {
-    private val TAG = "DetailActivity"
+    private val TAG = "MyDetailActivity"
     private lateinit var binding: ActivityDetailBinding
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)

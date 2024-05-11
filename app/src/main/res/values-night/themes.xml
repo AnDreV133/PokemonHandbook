@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.PokemonHandbook" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -14,4 +14,3 @@
         <!-- Customize your theme here. -->
     </style>
 </resources>
-<!--todo set color for dark theme-->

@@ -81,14 +81,6 @@ class PokemonsAdapter(private val context: AppCompatActivity) : RecyclerView.Ada
             cachedPokemons.addAll(buf)
         } catch (e: Exception) {
             Log.e(TAG, "Exception occurred when loading more Pokemon: ${e.message}")
-
-            /*val dialogFragment = ApiExceptionDialogFragment()
-            dialogFragment.show(
-                context.supportFragmentManager,
-                "ApiExceptionDialogFragment"
-            ) // todo move to listactivity
-
-            return dialogFragment.answer != DialogAnswer.TRY_AGAIN*/
         }
     }
 }

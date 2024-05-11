@@ -1,8 +1,6 @@
 package com.example.pokemonhandbook.adapter.pokemons
 
 import android.annotation.SuppressLint
-import com.bumptech.glide.Glide
-import com.example.pokemonhandbook.R
 import com.example.pokemonhandbook.utils.url2ImageView
 
 class PokemonViewHolderSetter(private val vh: PokemonViewHolder) {
@@ -30,9 +28,7 @@ class PokemonViewHolderSetter(private val vh: PokemonViewHolder) {
     }
 
     fun setClickListener(listener: () -> Unit): PokemonViewHolderSetter {
-        vh.itemView.setOnClickListener {
-            listener()
-        }
+        vh.itemView.setOnClickListener { listener() }
         return this
     }
 }

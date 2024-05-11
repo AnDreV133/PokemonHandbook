@@ -3,7 +3,10 @@ package com.example.pokemonhandbook;
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pokemonhandbook.adapter.ListAdapter
+import com.example.pokemonhandbook.api.PokemonApiHandler
 import com.example.pokemonhandbook.databinding.ActivityListBinding
+import kotlinx.coroutines.runBlocking
 
 class ListActivity : AppCompatActivity() {
     private val TAG = "MyListActivity"
@@ -11,10 +14,17 @@ class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding.root) // todo in async execution
 
-        val adapter = ListAdapter(arrayListOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"))
-        binding.recyclerView.adapter = adapter
+//        val adapter = ListAdapter( // todo in async execution
+//            buildList {
+//                runBlocking {
+//                    PokemonApiHandler.getByDiapason(0, 10)
+//                }
+//            }, this
+//        )
+
+        binding.recyclerView.adapter = ListAdapter(this)
         Log.d(TAG, "onCreate")
     }
 }

@@ -1,8 +1,10 @@
 package com.example.pokemonhandbook.api
 
+import android.util.Log
 import com.example.pokemonhandbook.api.model.Pokemon
-import com.example.pokemonhandbook.api.model.PokemonApi
 import com.example.pokemonhandbook.api.model.Sprites
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 import retrofit2.Retrofit
@@ -15,21 +17,38 @@ object PokemonApiHandler {
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(PokemonApi::class.java)
+        .create(IPokemonApi::class.java)
 
-    private fun <T> body(resp: Response<T>) =
-        if (resp.isSuccessful && resp.body() != null) resp.body()
-        else null
+//    private fun <T> body(call: Call<T>): T? {
+//        var res: T? = null
+//        call.enqueue( object : Callback<T> {
+//            override fun onResponse(call: Call<T>, response: Response<T>) {
+//                res = if (response.isSuccessful) response.body() else null
+//
+//                Log.d("PokemonApiHandler", "returned object from execute to API:\n$res")
+//            }
+//
+//            override fun onFailure(call: Call<T>, t: Throwable) {
+//                Log.e("PokemonApiHandler", "failed to execute to API:\n$t")
+//            }
+//        })
+//
+//        return res
+//    }
+//
+//    suspend fun get(id: Int): Pokemon? {
+//        return body(api.get(id))
+//    }
+//
+//    suspend fun getByDiapason(offset: Int, limit: Int): List<Pokemon>? {
+//        return body(api.getByDiapason(offset, limit))?.results
+//    }
 
-    suspend fun get(id: Int): Pokemon? {
-        return body(api.get(id))
-    }
+//    suspend fun getSprites(id: Int): Sprites? {
+//        return body(api.get(id))?.sprites
+//    }
 
-    suspend fun getByDiapason(offset: Int, limit: Int): List<Pokemon>? {
-        return body(api.getByDiapason(offset, limit))
-    }
-
-    suspend fun getSprites(id: Int): Sprites? {
-        return body(api.get(id))?.sprites
+    suspend fun get(id: Int): Response<Pokemon> {
+        return api.get(id)
     }
 }

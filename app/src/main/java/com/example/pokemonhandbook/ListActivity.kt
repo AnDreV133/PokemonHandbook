@@ -3,11 +3,8 @@ package com.example.pokemonhandbook;
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pokemonhandbook.adapter.ListAdapter
-import com.example.pokemonhandbook.api.PokemonApiHandler
+import com.example.pokemonhandbook.adapter.pokemons.PokemonsAdapter
 import com.example.pokemonhandbook.databinding.ActivityListBinding
-import kotlinx.coroutines.runBlocking
-import retrofit2.HttpException
 
 class ListActivity : AppCompatActivity() {
     private val TAG = "MyListActivity"
@@ -17,8 +14,7 @@ class ListActivity : AppCompatActivity() {
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-            binding.recyclerView.adapter = ListAdapter(this)
-
+        binding.fieldPokemonList.adapter = PokemonsAdapter(this)
 
         Log.d(TAG, "onCreate")
     }

@@ -1,4 +1,4 @@
-package com.example.pokemonhandbook.adapter
+package com.example.pokemonhandbook.adapter.pokemons
 
 import android.content.Intent
 import android.util.Log
@@ -15,24 +15,24 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import retrofit2.HttpException
 
-class ListAdapter(private val context: AppCompatActivity) : RecyclerView.Adapter<ViewHolder>() {
+class PokemonsAdapter(private val context: AppCompatActivity) : RecyclerView.Adapter<PokemonViewHolder>() {
     private val TAG = "MyListAdapter"
     private val NUM_OF_LOAD_ITEM = 25
     private val STOCK_FOR_LOAD = 10
     private var cachedPokemons: MutableList<Pokemon> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder = PokemonViewHolder(
         LayoutInflater.from(parent.context)
-            .inflate(R.layout.recycler_view_item, parent, false) as CardView, context
+            .inflate(R.layout.item_list, parent, false) as CardView, context
     )
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         if (position >= cachedPokemons.size - STOCK_FOR_LOAD) {
             loadMore()
         }
 
         cachedPokemons[position].run {
-            ViewHolderSetter(holder)
+            PokemonViewHolderSetter(holder)
                 .setFieldName(name)
                 .setFieldWeight(weight)
                 .setFieldHeight(height)
@@ -40,7 +40,7 @@ class ListAdapter(private val context: AppCompatActivity) : RecyclerView.Adapter
                 .setClickListener {
                     context.startActivity(
                         Intent(context, DetailActivity::class.java)
-                            .putExtra("detail", this)
+                            .putExtra("pokemon", this)
                     )
                 }
         }

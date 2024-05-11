@@ -1,5 +1,11 @@
 package com.example.pokemonhandbook.api.model
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.media.Image
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.example.pokemonhandbook.R
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
@@ -21,7 +27,6 @@ data class Sprites(
 
 data class Stat(
     @SerializedName("base_stat") val baseStat: Int,
-    @SerializedName("effort") val effort: Int,
     @SerializedName("stat") val stat: StatDetail,
 ) : Serializable
 

@@ -1,8 +1,7 @@
 package com.example.pokemonhandbook.api
 
 import com.example.pokemonhandbook.api.model.Pokemon
-import com.example.pokemonhandbook.api.model.Pokemons
-import retrofit2.Call
+import com.example.pokemonhandbook.api.model.PokemonCount
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -14,9 +13,12 @@ interface IPokemonApi {
         @Path("id") id: Int
     ): Response<Pokemon>
 
+    @GET("pokemon/")
+    suspend fun getCount(): Response<PokemonCount>
+
     @GET("pokemon")
     suspend fun getByDiapason(
         @Query("offset") offset: Int,
         @Query("limit") limit: Int,
-    ): Response<Pokemons>
+    ): Response<PokemonCount>
 }

@@ -1,16 +1,10 @@
 package com.example.pokemonhandbook.api.model
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.media.Image
-import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.example.pokemonhandbook.R
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class Pokemons(
-    @SerializedName("results") val results: List<Pokemon>
+data class PokemonCount(
+    @SerializedName("count") val count: Int,
 ) : Serializable
 
 data class Pokemon(

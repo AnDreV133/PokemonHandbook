@@ -14,14 +14,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.HttpException
 import java.io.IOException
 
 class PokemonsAdapter(private val context: AppCompatActivity) :
     RecyclerView.Adapter<PokemonViewHolder>() {
     private val TAG = "MyListAdapter"
-    private val NUM_OF_LOAD_ITEM = 25
-    private val STOCK_FOR_LOAD = 10
+    private val NUM_OF_LOADING_ITEM = 25
+    private val NUM_OF_ITEM_BEFORE_WHICH_HAPPEN_LOADING = 10
+    private val MAX_NUM_OF_ITEM_IF_TOTAL_AMOUNT_NOT_LOADED = 100
     private var cachedPokemons: MutableList<Pokemon?> = mutableListOf()
     private val totalNumOfPokemons = getTotalCount()
 
@@ -32,7 +32,7 @@ class PokemonsAdapter(private val context: AppCompatActivity) :
         )
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
-        if (position >= getItemCount() - STOCK_FOR_LOAD) {
+        if (position >= getItemCount() - NUM_OF_ITEM_BEFORE_WHICH_HAPPEN_LOADING) {
             loadMore()
         }
 
@@ -44,7 +44,7 @@ class PokemonsAdapter(private val context: AppCompatActivity) :
         Log.d(TAG, "Start init item by position: $position")
         CoroutineScope(Dispatchers.Default).launch {
             val resp = try {
-                 PokemonApiHandler.get(position + 1)
+                PokemonApiHandler.get(position + 1)
             } catch (e: IOException) {
                 Log.e(TAG, "Not connected to API")
                 return@launch
@@ -74,8 +74,13 @@ class PokemonsAdapter(private val context: AppCompatActivity) :
 
     private fun loadMore() {
         val buf: List<Pokemon?> = mutableListOf<Pokemon?>().apply {
-            repeat(NUM_OF_LOAD_ITEM) {
+            var count = 0
+            while (
+                count < NUM_OF_LOADING_ITEM && cachedPokemons.size
+                < (totalNumOfPokemons ?: MAX_NUM_OF_ITEM_IF_TOTAL_AMOUNT_NOT_LOADED)
+            ) {
                 add(null)
+                count++
             }
         }
 

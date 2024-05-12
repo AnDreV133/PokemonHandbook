@@ -1,2 +1,2 @@
-# PokemonHandler
+# PokemonHandbook
 Задача для прохождения на стажировку ВК на позицию разработчик на android. 2024 год.

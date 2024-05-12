@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">PokemonList</string>
-    <string name="stat">_stat_</string>
+    <string name="stat">stat</string>
     <string name="pokemon_handbook">Pokemon handbook</string>
-    <string name="weight">_weight_</string>
-    <string name="height">_height_</string>
-    <string name="name">_name_</string>
+    <string name="weight">weight</string>
+    <string name="height">height</string>
+    <string name="name">name</string>
     <string name="default_pokemon_image">defaultPokemonImage</string>
-    <string name="stat_value">_sv_</string>
+    <string name="stat_value">sv</string>
 </resources>
